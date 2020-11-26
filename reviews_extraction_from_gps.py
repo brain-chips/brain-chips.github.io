@@ -14,16 +14,18 @@ import time
 chrome_options = webdriver.ChromeOptions()
 
 #setting  up local path of chrome binary file
-chrome_options.binary_location = r"D:/AnacondaFiles/chromedriver_win32/chromedriver.exe"
+chrome_options.binary_location = r"D:/AnacondaFiles/chromedriver_win32/chromedriver.exe" #ubah path berdasarkan tempat Anda menyimpan chrome driver
 
 #creating Chrome webdriver instance with the set chrome_optionsX
-driver = webdriver.Chrome(executable_path=r'D:/AnacondaFiles/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome(executable_path=r'D:/AnacondaFiles/chromedriver_win32/chromedriver.exe') #ubah path berdasarkan tempat Anda menyimpan chrome driver
 
-link = "https://play.google.com/store/apps/details?id=com.dai.uangteman&showAllReviews=true"
+#Give link of the application from Google Play Store
+link = "https://play.google.com/store/apps/details?id=com.dxxxxxxxxxxxx" #change the link based on the application that you will use
 driver.get(link)
 #driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 Ptitle = driver.find_element_by_class_name('AHFaub').text#.replace(' ','')
 print(Ptitle)
+
 #driver.find_element_by_xpath('//*[@id="body-content"]/div/div/div[1]/div[2]/div[2]/div[1]/div[4]/button[2]/div[2]').click()
 
 #sleep(1)
@@ -35,6 +37,7 @@ print(Ptitle)
 #driver.find_element_by_css_selector('.displayed-child').click()
 #driver.find_element_by_xpath("//button[@data-dropdown-value='1']").click()
 #driver.execute_script("document.querySelectorAll('button.dropdown-child')[0].click()")
+
 reviews_df = []
 
 
@@ -90,6 +93,7 @@ for i in range(1,2):
 #driver.find_element_by_css_selector("div.U26fgb.O0WRkf.oG5Srb.C0oVfc.n9lfJ.M9Bg4d.content.CwaK9.span.RveJvd.snByac").click()
 reviews_df = pd.concat(reviews_df,ignore_index=True)
 
+#save to csv file
 reviews_df.to_csv(Ptitle+'_reviews_list.csv', encoding='utf-8')
 
 #driver.close()
