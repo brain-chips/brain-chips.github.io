@@ -1,4 +1,4 @@
-#https://www.analyticsvidhya.com/blog/2018/02/the-different-methods-deal-text-data-predictive-python/
+#Sumber: https://www.analyticsvidhya.com/blog/2018/02/the-different-methods-deal-text-data-predictive-python/
 import fileinput
 import csv
 import pandas
@@ -23,13 +23,13 @@ from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFacto
 from collections import Counter
 
 # #load dataset
-url = "/Volumes/MLJKT/BINUS/Group task/Thesis Colloquium/10000testfrommain2.csv"
+url = "10000testfrommain2.csv" #input path where you save the csv file containing the dataset along with the file name .csv
 names = ['review']
 dataset = pandas.read_csv(url, encoding="ISO-8859-1")
 df = pandas.DataFrame()
 #print(dataset['review'].head(5))
 
-#lower case
+#case folding - lower case
 dataset['review'] = dataset['review'].apply(lambda x: x.lower())
 dataset['review'] = dataset['review'].str.replace('[^\w\s]','')
 #print(dataset['review'].head(5))
@@ -52,4 +52,4 @@ print(freq)
 
 # ====================
 df = pandas.DataFrame(dataset['review'])#, dataset['class'])
-df.to_csv('/Volumes/MLJKT/BINUS/Group task/Thesis Colloquium/hasiltestformmain2_5.csv', mode="a", header=False)
+df.to_csv('result.csv', mode="a", header=False) #input path and file name where you WANT to save the stemming results in the csv file
